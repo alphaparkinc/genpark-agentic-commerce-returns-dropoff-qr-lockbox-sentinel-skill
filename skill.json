@@ -1,0 +1,72 @@
+{
+  "name": "genpark-agentic-commerce-returns-dropoff-qr-lockbox-sentinel-skill",
+  "title": "Returns Dropoff QR & Smart Lockbox Reverse Logistics Skill",
+  "version": "1.0.0",
+  "description": "E-commerce frictionless reverse logistics, contactless box-free QR return code generator, carrier consolidation hub routing, and instant refund credit ledger. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "organization": {
+    "name": "GenPark Inc.",
+    "url": "https://www.genpark.ai",
+    "linkedin": "https://www.linkedin.com/company/92955550"
+  },
+  "mcp_version": "2024-11-05",
+  "category": "agentic-commerce",
+  "tools": [
+    {
+      "name": "generate_boxless_return_qr_pass",
+      "description": "Issue single-use carrier dropoff QR pass (UPS Store / FedEx Office / Amazon Lockbox) with automated instant store credit pre-authorization.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string"
+          },
+          "sku_id": {
+            "type": "string"
+          },
+          "return_reason": {
+            "type": "string",
+            "enum": [
+              "wrong_size",
+              "defective_item",
+              "not_as_described",
+              "buyer_remorse"
+            ]
+          },
+          "item_price_usd": {
+            "type": "number"
+          },
+          "customer_loyalty_score": {
+            "type": "number",
+            "description": "0.0 to 1.0"
+          }
+        },
+        "required": [
+          "order_id",
+          "sku_id",
+          "return_reason",
+          "item_price_usd",
+          "customer_loyalty_score"
+        ]
+      }
+    },
+    {
+      "name": "find_optimal_dropoff_consolidation_kiosk",
+      "description": "Locate closest contactless locker or retail consolidation partner minimizing consumer transit effort and carrier shipping costs.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "consumer_postal_code": {
+            "type": "string"
+          },
+          "package_requires_temperature_control": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "consumer_postal_code"
+        ]
+      }
+    }
+  ]
+}
